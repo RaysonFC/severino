@@ -12,17 +12,11 @@
 :root{
   --bg:#050c1a;--surf:#0a1929;--surf2:#0d2040;--surf3:#102548;
   --border:#1a3a5c;--border2:#1f4a78;--text:#cfe4f8;--muted:#4a7aa0;--muted2:#2a5070;
-  --accent:#38bdf8;--accent2:#0ea5e9;--green:#34d399;--blue:#818cf8;--yellow:#fbbf24;--red:#f87171;
-  --r:10px;
+  --accent:#38bdf8;--accent2:#0ea5e9;--green:#34d399;--blue:#818cf8;--red:#f87171;--r:10px;
 }
 html{scroll-behavior:smooth}
-body{
-  background:var(--bg);
-  background-image:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(14,165,233,.12),transparent),
-    radial-gradient(ellipse 40% 30% at 80% 80%,rgba(99,102,241,.06),transparent);
-  color:var(--text);font-family:'Inter',system-ui,sans-serif;font-size:14px;min-height:100vh;line-height:1.6;
-}
-.wrap{max-width:1180px;margin:0 auto;padding:36px 24px 100px}
+body{background:var(--bg);background-image:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(14,165,233,.12),transparent),radial-gradient(ellipse 40% 30% at 80% 80%,rgba(99,102,241,.06),transparent);color:var(--text);font-family:'Inter',system-ui,sans-serif;font-size:14px;min-height:100vh;line-height:1.6}
+.wrap{max-width:1200px;margin:0 auto;padding:36px 24px 100px}
 .header{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border);display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:14px}
 .logo-icon{width:46px;height:46px;background:linear-gradient(135deg,var(--accent2),var(--blue));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 0 24px rgba(56,189,248,.25)}
@@ -55,8 +49,8 @@ body{
 .tog small{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace}
 #dropZone{background:var(--surf);border:2px dashed var(--border);border-radius:var(--r);padding:36px 24px 28px;text-align:center;cursor:pointer;transition:border-color .25s,background .25s,box-shadow .25s;margin-bottom:16px;user-select:none}
 #dropZone:hover,#dropZone.over{border-color:var(--accent);background:var(--surf2);box-shadow:0 0 40px rgba(56,189,248,.08),inset 0 0 40px rgba(56,189,248,.03)}
-#dropZone.ok{border-color:var(--green);background:rgba(52,211,153,.04);box-shadow:0 0 30px rgba(52,211,153,.1)}
-.dz-icon{font-size:40px;margin-bottom:10px;display:block;pointer-events:none;filter:drop-shadow(0 0 12px rgba(56,189,248,.3))}
+#dropZone.ok{border-color:var(--green);background:rgba(52,211,153,.04)}
+.dz-icon{font-size:40px;margin-bottom:10px;display:block;pointer-events:none}
 .dz-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;margin-bottom:14px;pointer-events:none;color:#fff}
 .dz-methods{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;pointer-events:none}
 .dz-method{background:var(--surf2);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace}
@@ -68,7 +62,7 @@ body{
 #prevWrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;cursor:grab;transform-origin:center;user-select:none;transition:transform .04s ease-out}
 #prevWrap img:active{cursor:grabbing}
 #prevLabel{position:absolute;top:12px;left:14px;display:none;background:rgba(5,12,26,.85);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:11px;color:var(--muted);backdrop-filter:blur(8px);max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;pointer-events:none;z-index:5;font-family:'DM Mono',monospace}
-#prevNav{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(5,12,26,.85);border:1px solid var(--border);border-radius:24px;padding:6px 18px;display:none;align-items:center;gap:14px;font-size:12px;color:var(--muted);backdrop-filter:blur(8px);z-index:5;white-space:nowrap;font-family:'DM Mono',monospace}
+#prevNav{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(5,12,26,.85);border:1px solid var(--border);border-radius:24px;padding:6px 18px;display:none;align-items:center;gap:14px;font-size:12px;color:var(--muted);backdrop-filter:blur(8px);z-index:5;font-family:'DM Mono',monospace}
 #prevNav button{background:none;border:none;color:var(--accent);font-size:22px;cursor:pointer;padding:0 3px;line-height:1}
 #prevNav button:disabled{opacity:.2;cursor:default}
 #zoomHint{position:absolute;bottom:12px;right:14px;display:none;font-size:10px;color:var(--muted2);background:rgba(5,12,26,.7);border-radius:4px;padding:3px 9px;pointer-events:none;z-index:5;font-family:'DM Mono',monospace}
@@ -92,15 +86,33 @@ body{
 #errList{padding:10px 18px;max-height:220px;overflow-y:auto;display:none}
 .err-item{font-size:12px;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--border);display:flex;gap:12px;word-break:break-all;font-family:'DM Mono',monospace}
 .err-item:last-child{border-bottom:none}.err-num{color:var(--red);min-width:24px;font-weight:700;flex-shrink:0}
+
+/* TABELA EDITÁVEL */
 #tblWrap{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;background:var(--surf);display:none;margin-bottom:4px}
-.tbl-scroll{max-height:500px;overflow:auto}
+.tbl-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--surf2);border-bottom:1px solid var(--border)}
+.tbl-header-title{font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;display:flex;align-items:center;gap:8px}
+.edit-hint{font-size:10px;color:var(--muted2);font-family:'DM Mono',monospace;display:flex;align-items:center;gap:5px}
+.edit-hint::before{content:'✏️';font-size:11px}
+.tbl-scroll{max-height:520px;overflow:auto}
 table{width:100%;border-collapse:collapse}
 thead tr{background:var(--surf2);border-bottom:1px solid var(--border2);position:sticky;top:0;z-index:2}
-thead th{padding:11px 16px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);white-space:nowrap;font-family:'DM Mono',monospace}
-tbody tr{border-bottom:1px solid var(--border);transition:background .12s}tbody tr:last-child{border-bottom:none}tbody tr:hover td{background:var(--surf2)}
-tbody td{padding:9px 16px;font-size:13px;white-space:nowrap}
-.ca-pr{color:var(--green);font-weight:700}.ca-rj{color:var(--blue);font-weight:700}
+thead th{padding:10px 14px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);white-space:nowrap;font-family:'DM Mono',monospace}
+tbody tr{border-bottom:1px solid var(--border);transition:background .12s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover td{background:rgba(13,32,64,.6)}
+tbody td{padding:0;font-size:13px;white-space:nowrap;position:relative}
+/* célula editável */
+tbody td .cell-inner{padding:8px 14px;display:block;min-height:36px;cursor:text;outline:none;transition:background .15s,box-shadow .15s}
+tbody td .cell-inner:focus{background:rgba(56,189,248,.08);box-shadow:inset 0 0 0 2px var(--accent);border-radius:4px;color:#fff}
+tbody td.modified .cell-inner{color:var(--accent)}
+tbody td.ca-pr .cell-inner{color:var(--green);font-weight:700}
+tbody td.ca-rj .cell-inner{color:var(--blue);font-weight:700}
+/* linha com erro de validação */
+tbody tr.row-warn td:first-child .cell-inner::after{content:'⚠';position:absolute;left:4px;top:50%;transform:translateY(-50%);font-size:10px;color:var(--red)}
 .no-data{padding:48px;text-align:center;color:var(--muted);line-height:2;font-family:'DM Mono',monospace;font-size:12px}
+/* tooltip de ajuda */
+.tbl-tip{font-size:11px;color:var(--muted2);font-family:'DM Mono',monospace;padding:8px 16px;border-top:1px solid var(--border);background:var(--surf)}
+
 ::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:var(--surf)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
 @media(max-width:640px){.wrap{padding:18px 14px 70px}.cfg{flex-direction:column}#prevWrap{height:clamp(220px,50vw,380px)}.header{flex-direction:column;align-items:flex-start}}
 </style>
@@ -134,7 +146,6 @@ tbody td{padding:9px 16px;font-size:13px;white-space:nowrap}
         <option value="por+eng">Português + Inglês</option>
         <option value="por">Somente Português</option>
         <option value="eng">Somente Inglês</option>
-        <option value="por+eng+spa">Port. + Inglês + Espanhol</option>
       </select>
     </div>
     <div class="cfg-g">
@@ -147,23 +158,17 @@ tbody td{padding:9px 16px;font-size:13px;white-space:nowrap}
       </select>
     </div>
     <div class="cfg-g">
-      <label>Contraste</label>
-      <select id="selContrast">
-        <option value="1.4">Suave (1.4×)</option>
-        <option value="1.7" selected>Normal (1.7×)</option>
-        <option value="2.2">Forte (2.2×)</option>
-        <option value="3.0">Máximo (3.0×)</option>
+      <label>Escala de Ampliação</label>
+      <select id="selScale">
+        <option value="2">2× (rápido)</option>
+        <option value="3" selected>3× (recomendado)</option>
+        <option value="4">4× (mais preciso)</option>
       </select>
-    </div>
-    <div class="cfg-g tog">
-      <input type="checkbox" id="chkPre" checked>
-      <label for="chkPre">Pré-processar imagem</label>
-      <small>cinza · contraste · sharpen</small>
     </div>
     <div class="cfg-g tog">
       <input type="checkbox" id="chkInv" checked>
       <label for="chkInv">Inverter cores</label>
-      <small>screenshots fundo escuro</small>
+      <small>fundo escuro</small>
     </div>
   </div>
 
@@ -210,7 +215,14 @@ tbody td{padding:9px 16px;font-size:13px;white-space:nowrap}
     <div id="errList"></div>
   </div>
 
-  <div id="tblWrap"><div class="tbl-scroll" id="tblScroll"></div></div>
+  <div id="tblWrap">
+    <div class="tbl-header">
+      <div class="tbl-header-title">Resultados <span id="tblCount"></span></div>
+      <div class="edit-hint">Clique em qualquer célula para editar</div>
+    </div>
+    <div class="tbl-scroll" id="tblScroll"></div>
+    <div class="tbl-tip" id="tblTip" style="display:none">⚠ Células em <span style="color:var(--accent)">azul</span> foram editadas manualmente.</div>
+  </div>
 
   <div class="actions" id="actBar" style="display:none">
     <button class="btn btn-dark" id="btnDl">↓ Baixar CSV</button>
@@ -222,21 +234,41 @@ tbody td{padding:9px 16px;font-size:13px;white-space:nowrap}
 <script>
 "use strict";
 
-/* ── CORRECTIONS ── */
-function cleanText(t){return t.replace(/[\x00-\x09\x0b-\x1f\x7f]/g," ").replace(/\r\n?/g,"\n").replace(/[|¦¡]/g,"1").replace(/[©®°·•]/g,"0").replace(/[^\x20-\x7E\u00C0-\u024F\u00A0\n]/g," ").replace(/[^\S\n]+/g," ")}
-function fixDate(r){if(/^\d{2}\/\d{2}\/\d{4}$/.test(r))return r;let d=r.replace(/[-\.]/g,"/");d=d.replace(/^(\d)\//,"0$1/").replace(/\/(\d)\//,"/0$1/");d=d.replace(/^(\d{2}\/\d{2}\/)(\d{2})$/,(_,p,y)=>p+(+y<=30?"20":"19")+y);return d}
-function fixNum(s){return String(s).replace(/[oO]/g,"0").replace(/[dD]/g,"0").replace(/[qQ]/g,"0").replace(/[iIlL]/g,"1").replace(/[sS]/g,"5").replace(/[bB]/g,"8").replace(/[gG]/g,"9").replace(/[zZ]/g,"2").replace(/T/g,"7")}
+/* ════════════════════════════════════════════════
+   CORRECTIONS
+════════════════════════════════════════════════ */
+function cleanText(t){
+  return t.replace(/[\x00-\x09\x0b-\x1f\x7f]/g," ").replace(/\r\n?/g,"\n")
+    .replace(/[|¦¡]/g,"1").replace(/[©®°·•]/g,"0")
+    .replace(/[^\x20-\x7E\u00C0-\u024F\u00A0\n]/g," ").replace(/[^\S\n]+/g," ");
+}
+function fixDate(r){
+  if(/^\d{2}\/\d{2}\/\d{4}$/.test(r))return r;
+  let d=r.replace(/[-\.]/g,"/");
+  d=d.replace(/^(\d)\//,"0$1/").replace(/\/(\d)\//,"/0$1/");
+  d=d.replace(/^(\d{2}\/\d{2}\/)(\d{2})$/,(_,p,y)=>p+(+y<=30?"20":"19")+y);
+  return d;
+}
+function fixNum(s){
+  return String(s).replace(/[oO]/g,"0").replace(/[dD]/g,"0").replace(/[qQ]/g,"0")
+    .replace(/[iIlL]/g,"1").replace(/[sS]/g,"5").replace(/[bB]/g,"8")
+    .replace(/[gG]/g,"9").replace(/[zZ]/g,"2").replace(/T/g,"7");
+}
 function fixCode(token,desc){
   const t=token.trim();
   if(/^\d{6}$/.test(t))return[t,desc];
   if(/^\d{4,5}$/.test(t))return[t.padStart(6,"0"),desc];
-  const gl=t.match(/^(\d{4,7})(.+)$/);if(gl)return[gl[1].slice(0,6).padStart(6,"0"),(gl[2].replace(/^[\s_\-]+/,"")+" "+desc).trim()];
-  const fc=fixNum(t);if(/^\d{4,7}$/.test(fc))return[fc.padStart(6,"0"),desc];
-  const gm=t.match(/^[A-Za-z]{1,2}(\d{4,6})(.*)$/);if(gm)return[fixNum(gm[1]).padStart(6,"0"),(gm[2]+" "+desc).trim()];
+  const gl=t.match(/^(\d{4,7})(.+)$/);
+  if(gl)return[gl[1].slice(0,6).padStart(6,"0"),(gl[2].replace(/^[\s_\-]+/,"")+" "+desc).trim()];
+  const fc=fixNum(t);
+  if(/^\d{4,7}$/.test(fc))return[fc.padStart(6,"0"),desc];
+  const gm=t.match(/^[A-Za-z]{1,2}(\d{4,6})(.*)$/);
+  if(gm)return[fixNum(gm[1]).padStart(6,"0"),(gm[2]+" "+desc).trim()];
   if(/^[^0-9a-zA-Z]/.test(t)||t.length<=1){
     const m6=desc.match(/^(\d{6})\s*(.*)/);if(m6)return[m6[1],m6[2]];
     const m=desc.match(/^(\d{4,7})\s+(.*)/);if(m)return[m[1].padStart(6,"0"),m[2]];
-    const ml=desc.match(/^([A-Za-z0-9]{4,7})\s+(.*)/);if(ml){const f=fixNum(ml[1]);if(/^\d+$/.test(f))return[f.padStart(6,"0"),ml[2]]}
+    const ml=desc.match(/^([A-Za-z0-9]{4,7})\s+(.*)/);
+    if(ml){const f=fixNum(ml[1]);if(/^\d+$/.test(f))return[f.padStart(6,"0"),ml[2]]}
   }
   return[t,desc];
 }
@@ -254,23 +286,29 @@ function preCorrect(line){
   return c;
 }
 
-/* ── PREPROCESS ── */
+/* ════════════════════════════════════════════════
+   PREPROCESS — melhorado
+   Sem threshold binário agressivo para preservar
+   detalhes finos dos dígitos (evita 8→3, 9→7, etc.)
+════════════════════════════════════════════════ */
 const KSH=[0,-1,0,-1,5,-1,0,-1,0];
 function applySharpen(data,W,H){
   const src=new Uint8ClampedArray(data);
   for(let y=1;y<H-1;y++)for(let x=1;x<W-1;x++){
     let s=0;
-    for(let ky=-1;ky<=1;ky++)for(let kx=-1;kx<=1;kx++)s+=src[((y+ky)*W+(x+kx))*4]*KSH[(ky+1)*3+(kx+1)];
+    for(let ky=-1;ky<=1;ky++)for(let kx=-1;kx<=1;kx++)
+      s+=src[((y+ky)*W+(x+kx))*4]*KSH[(ky+1)*3+(kx+1)];
     const o=(y*W+x)*4,v=Math.max(0,Math.min(255,s));
     data[o]=data[o+1]=data[o+2]=v;
   }
 }
-function preprocessImage(file,cf,doInv){
+function preprocessImage(file,scale,doInvert){
   return new Promise((res,rej)=>{
     const img=new Image();
     img.onload=()=>{
-      const sc=Math.max(1.5,Math.min(3,3000/img.width,3000/img.height));
-      const W=Math.round(img.width*sc),H=Math.round(img.height*sc);
+      // Escala controlada pelo usuário (2×, 3× ou 4×)
+      const W=Math.round(img.width*scale);
+      const H=Math.round(img.height*scale);
       const cv=document.createElement("canvas");cv.width=W;cv.height=H;
       const ctx=cv.getContext("2d");
       ctx.fillStyle="#fff";ctx.fillRect(0,0,W,H);
@@ -278,23 +316,42 @@ function preprocessImage(file,cf,doInv){
       ctx.drawImage(img,0,0,W,H);
       const id=ctx.getImageData(0,0,W,H),d=id.data;
       for(let i=0;i<d.length;i+=4){
+        // Escala de cinza BT.601
         let g=0.299*d[i]+0.587*d[i+1]+0.114*d[i+2];
-        if(doInv)g=255-g;
-        let c=(g-128)*cf+128;
-        if(c>178)c=255;else if(c<77)c=0;
-        d[i]=d[i+1]=d[i+2]=Math.max(0,Math.min(255,Math.round(c)));d[i+3]=255;
+        // Inversão opcional (fundo escuro → fundo claro)
+        if(doInvert)g=255-g;
+        // Contraste suave sem threshold binário
+        // threshold binário destrói detalhes: 8 vira 3, 9 vira 7
+        let c=(g-128)*1.5+128;
+        c=Math.max(0,Math.min(255,Math.round(c)));
+        d[i]=d[i+1]=d[i+2]=c;d[i+3]=255;
       }
-      applySharpen(d,W,H);ctx.putImageData(id,0,0);
+      // Dois passes de sharpen para maior nitidez
+      applySharpen(d,W,H);
+      applySharpen(d,W,H);
+      ctx.putImageData(id,0,0);
       cv.toBlob(b=>b?res(b):rej(new Error("blob fail")),"image/png");
     };
     img.onerror=()=>rej(new Error("Falha: "+file.name));
     img.src=URL.createObjectURL(file);
   });
 }
-function getTesseractConfig(psm){return{tessedit_pageseg_mode:psm,preserve_interword_spaces:"1",load_system_dawg:"0",load_freq_dawg:"0",tessedit_char_whitelist:"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜàáâãäçèéêëìíîïñòóôõöùúûü /.,;:-_()"}}
+function getTesseractConfig(psm){
+  return{
+    tessedit_pageseg_mode:psm,
+    preserve_interword_spaces:"1",
+    load_system_dawg:"0",
+    load_freq_dawg:"0",
+    // SEM whitelist — whitelist agressiva faz o Tesseract forçar
+    // caracteres errados. Melhor deixar ele decidir livremente.
+  };
+}
 
-/* ── PARSER ── */
-const DATE_PAT=/\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4}/,HDR_PAT=/^(Data|Pedido|UN|CA|Qtd|C.d|Descri)/i;
+/* ════════════════════════════════════════════════
+   PARSER
+════════════════════════════════════════════════ */
+const DATE_PAT=/\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4}/;
+const HDR_PAT=/^(Data|Pedido|UN|CA|Qtd|C.d|Descri)/i;
 const PATS=[
   /(\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4})\s+(\S+)\s+(\S{1,5})\s+(\S{1,5})\s+([\d.,]+)\s+(\d{6})\s+(.*)/,
   /(\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4})\s+(\S+)\s+(\S{1,5})\s+(\S{1,5})\s+([\d.,]+)\s+([0-9]\S{3,})\s+(.*)/,
@@ -314,15 +371,22 @@ function parseLine(raw){
 }
 function parseOCRText(txt){
   const rows=[],skipped=[];
-  cleanText(txt).split("\n").map(l=>l.trim()).filter(l=>l.length>=15).filter(l=>!HDR_PAT.test(l)).filter(l=>DATE_PAT.test(l))
+  cleanText(txt).split("\n").map(l=>l.trim()).filter(l=>l.length>=15)
+    .filter(l=>!HDR_PAT.test(l)).filter(l=>DATE_PAT.test(l))
     .forEach(l=>{const r=parseLine(l);r?rows.push(r):skipped.push(l)});
   return{rows,skipped};
 }
 
-/* ── STATE ── */
+/* ════════════════════════════════════════════════
+   STATE
+════════════════════════════════════════════════ */
 let FILES=[],ROWS=[],SKIPPED=[];
+// ROWS é uma array de arrays — mudanças na tabela editável
+// atualizam diretamente ROWS[rowIdx][colIdx]
 
-/* ── ELEMENTOS DOM ── */
+/* ════════════════════════════════════════════════
+   DOM REFS
+════════════════════════════════════════════════ */
 const dropZone=document.getElementById("dropZone");
 const fInput=document.getElementById("fInput");
 const pasteMsg=document.getElementById("pasteMsg");
@@ -341,52 +405,43 @@ const btnNext=document.getElementById("btnNext");
 const zoomHint=document.getElementById("zoomHint");
 const actBar=document.getElementById("actBar");
 
-/* ── UPLOAD ── */
-dropZone.addEventListener("click",e=>{
-  if(e.target===fInput)return;
-  fInput.click();
-});
-fInput.addEventListener("change",e=>{
-  addFiles([...e.target.files]);
-  fInput.value="";
-});
+/* ════════════════════════════════════════════════
+   UPLOAD
+════════════════════════════════════════════════ */
+dropZone.addEventListener("click",e=>{if(e.target===fInput)return;fInput.click()});
+fInput.addEventListener("change",e=>{addFiles([...e.target.files]);fInput.value=""});
 dropZone.addEventListener("dragenter",e=>{e.preventDefault();dropZone.classList.add("over")});
 dropZone.addEventListener("dragover", e=>{e.preventDefault();dropZone.classList.add("over")});
 dropZone.addEventListener("dragleave",e=>{if(!dropZone.contains(e.relatedTarget))dropZone.classList.remove("over")});
 dropZone.addEventListener("drop",e=>{e.preventDefault();dropZone.classList.remove("over");addFiles([...e.dataTransfer.files])});
-
 let pasteTimer=null;
 window.addEventListener("paste",e=>{
-  const cbd=e.clipboardData||window.clipboardData;
-  if(!cbd)return;
+  const cbd=e.clipboardData||window.clipboardData;if(!cbd)return;
   const imgs=Array.from(cbd.items||[]).filter(it=>it.kind==="file"&&it.type.startsWith("image/"));
-  if(!imgs.length)return;
-  e.preventDefault();
+  if(!imgs.length)return;e.preventDefault();
   const ts=new Date().toISOString().slice(0,19).replace(/[T:]/g,"-");
   const nf=imgs.map((it,i)=>{const b=it.getAsFile();return new File([b],imgs.length===1?`colado_${ts}.png`:`colado_${ts}_${i+1}.png`,{type:b.type||"image/png"})});
   addFiles(nf);
   pasteMsg.textContent=nf.length===1?"✔ Imagem colada com sucesso!":`✔ ${nf.length} imagens coladas!`;
   pasteMsg.classList.add("show");dropZone.classList.add("ok");
-  clearTimeout(pasteTimer);
-  pasteTimer=setTimeout(()=>{pasteMsg.classList.remove("show");dropZone.classList.remove("ok")},3000);
+  clearTimeout(pasteTimer);pasteTimer=setTimeout(()=>{pasteMsg.classList.remove("show");dropZone.classList.remove("ok")},3000);
 });
-
 function addFiles(list){
   const valid=list.filter(f=>f.type.startsWith("image/"));
   if(!valid.length){alert("Nenhuma imagem válida.\nFormatos: PNG, JPG, WEBP, BMP.");return}
-  FILES=[...FILES,...valid];
-  _showPreview(0,FILES);
+  FILES=[...FILES,...valid];_showPreview(0,FILES);
 }
 
-/* ── PREVIEW ── */
+/* ════════════════════════════════════════════════
+   PREVIEW
+════════════════════════════════════════════════ */
 let _pFiles=[],_pIdx=0;
 function _showPreview(idx,files){
   if(files)_pFiles=files;
   _pIdx=Math.max(0,Math.min(idx,_pFiles.length-1));
   const file=_pFiles[_pIdx];
   const old=prevWrap.querySelector("img");if(old)old.remove();
-  prevEmpty.style.display="none";
-  prevLabel.style.display="block";
+  prevEmpty.style.display="none";prevLabel.style.display="block";
   prevLabel.textContent=`${_pIdx+1} / ${_pFiles.length}  —  ${file.name}`;
   zoomHint.style.display="block";
   const img=document.createElement("img");img.alt=file.name;
@@ -406,8 +461,7 @@ function _showPreview(idx,files){
     else if(drag&&e.touches.length===1){px=e.touches[0].clientX-sx;py=e.touches[0].clientY-sy;aT()}
   },{passive:false});
   img.addEventListener("touchend",()=>{drag=false;ld=null});
-  prevWrap.insertBefore(img,prevLabel);
-  img.src=URL.createObjectURL(file);
+  prevWrap.insertBefore(img,prevLabel);img.src=URL.createObjectURL(file);
   if(_pFiles.length>1){prevNav.style.display="flex";navLbl.textContent=`${_pIdx+1} / ${_pFiles.length}`;btnPrev.disabled=_pIdx===0;btnNext.disabled=_pIdx===_pFiles.length-1}
   else prevNav.style.display="none";
 }
@@ -419,60 +473,158 @@ document.addEventListener("keydown",e=>{
   if(e.key==="ArrowRight"&&_pIdx<_pFiles.length-1)_showPreview(_pIdx+1);
 });
 
-/* ── TABLE ── */
+/* ════════════════════════════════════════════════
+   TABELA EDITÁVEL
+   Cada célula é um contenteditable span.
+   A edição atualiza ROWS diretamente.
+════════════════════════════════════════════════ */
+const COL_HEADERS=["Data","Pedido","UN","CA","Qtd","Código","Descrição"];
+let _hasEdits=false;
+
 function renderTable(rows){
-  const wrap=document.getElementById("tblWrap"),sc=document.getElementById("tblScroll");
-  sc.innerHTML="";wrap.style.display="block";
-  if(!rows.length){sc.innerHTML='<div class="no-data">Nenhum dado reconhecido.<br>Tente outro idioma · ajuste o contraste · desative inversão.</div>';return}
-  const tbl=document.createElement("table"),hr=tbl.createTHead().insertRow();
-  ["Data","Pedido","UN","CA","Qtd","Código","Descrição"].forEach(h=>{const th=document.createElement("th");th.textContent=h;hr.appendChild(th)});
+  const wrap=document.getElementById("tblWrap");
+  const sc=document.getElementById("tblScroll");
+  const tip=document.getElementById("tblTip");
+  const cnt=document.getElementById("tblCount");
+  sc.innerHTML="";_hasEdits=false;tip.style.display="none";
+  wrap.style.display="block";
+  cnt.textContent=rows.length?`— ${rows.length} linha(s)`:"";
+
+  if(!rows.length){
+    sc.innerHTML='<div class="no-data">Nenhum dado reconhecido.<br>Tente ajustar a escala · mude o modo de página · desative inversão.</div>';
+    return;
+  }
+
+  const tbl=document.createElement("table");
+  const hr=tbl.createTHead().insertRow();
+  COL_HEADERS.forEach(h=>{const th=document.createElement("th");th.textContent=h;hr.appendChild(th)});
+
   const tb=tbl.createTBody();
-  rows.forEach(row=>{const tr=tb.insertRow();row.forEach((cell,i)=>{const td=tr.insertCell();td.textContent=cell;if(i===3){const n=String(cell).replace(/^0+/,"");if(n==="1")td.className="ca-pr";if(n==="28")td.className="ca-rj"}})});
+  rows.forEach((row,ri)=>{
+    const tr=tb.insertRow();
+    tr.dataset.row=ri;
+    row.forEach((cell,ci)=>{
+      const td=tr.insertCell();
+      // Classe de cor para CA
+      if(ci===3){
+        const n=String(cell).replace(/^0+/,"");
+        if(n==="1")td.className="ca-pr";
+        if(n==="28")td.className="ca-rj";
+      }
+      // Célula editável
+      const span=document.createElement("span");
+      span.className="cell-inner";
+      span.contentEditable="true";
+      span.spellcheck=false;
+      span.textContent=cell;
+      span.dataset.orig=cell;
+
+      // Ao terminar edição, atualiza ROWS
+      span.addEventListener("blur",()=>{
+        const newVal=span.textContent.trim();
+        ROWS[ri][ci]=newVal;
+        const changed=newVal!==span.dataset.orig;
+        td.classList.toggle("modified",changed);
+        if(changed){_hasEdits=true;tip.style.display="block"}
+        // re-aplica cor CA se coluna 3 foi editada
+        if(ci===3){
+          const n=newVal.replace(/^0+/,"");
+          td.className=n==="1"?"ca-pr modified":n==="28"?"ca-rj modified":"modified";
+          if(!changed)td.classList.remove("modified");
+        }
+        updateCards(ROWS,SKIPPED);
+      });
+      // Enter confirma edição (não quebra linha)
+      span.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();span.blur()}});
+
+      td.appendChild(span);
+    });
+  });
   sc.appendChild(tbl);
 }
+
 function renderErrors(skipped){
   const box=document.getElementById("errBox"),list=document.getElementById("errList");
   document.getElementById("errBadge").textContent=skipped.length;
   if(!skipped.length){box.style.display="none";return}
   box.style.display="block";list.innerHTML="";
-  skipped.forEach((line,i)=>{const d=document.createElement("div");d.className="err-item";d.innerHTML=`<span class="err-num">${String(i+1).padStart(2,"0")}</span><span>${String(line).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</span>`;list.appendChild(d)});
+  skipped.forEach((line,i)=>{
+    const d=document.createElement("div");d.className="err-item";
+    d.innerHTML=`<span class="err-num">${String(i+1).padStart(2,"0")}</span><span>${String(line).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</span>`;
+    list.appendChild(d);
+  });
 }
-function updateCards(rows,skipped){
-  let pr=0,rj=0;rows.forEach(r=>{const ca=String(r[3]).replace(/^0+/,"");if(ca==="1")pr++;if(ca==="28")rj++});
-  document.getElementById("cPR").textContent=pr;document.getElementById("cRJ").textContent=rj;
-  document.getElementById("cTOT").textContent=rows.length;document.getElementById("cERR").textContent=skipped.length;
-}
-function resetTable(){document.getElementById("tblWrap").style.display="none";document.getElementById("tblScroll").innerHTML="";document.getElementById("errBox").style.display="none";document.getElementById("errList").innerHTML="";document.getElementById("errBadge").textContent="0";updateCards([],[])}
-document.getElementById("btnTogErr").addEventListener("click",()=>{const l=document.getElementById("errList"),o=l.style.display==="block";l.style.display=o?"none":"block";document.getElementById("btnTogErr").textContent=o?"▼ Ver":"▲ Ocultar"});
+document.getElementById("btnTogErr").addEventListener("click",()=>{
+  const l=document.getElementById("errList"),o=l.style.display==="block";
+  l.style.display=o?"none":"block";
+  document.getElementById("btnTogErr").textContent=o?"▼ Ver":"▲ Ocultar";
+});
 
-/* ── EXPORT ── */
-let _rows=[],_skipped=[];
-function getCSV(){return"Data;Pedido;UN;CA;Qtd;CodMaterial;Descricao\n"+_rows.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(";")).join("\n")+"\n"}
-function dlBlob(content,filename,mime){const blob=new Blob(["\uFEFF"+content],{type:mime}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=filename;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url)}
-document.getElementById("btnDl").addEventListener("click",()=>{if(_rows.length)dlBlob(getCSV(),"dados.csv","text/csv;charset=utf-8;")});
-document.getElementById("btnDlErr").addEventListener("click",()=>{if(!_skipped.length){alert("Sem erros para exportar.");return}dlBlob(_skipped.join("\n"),"erros_ocr.txt","text/plain;charset=utf-8;")});
+function updateCards(rows,skipped){
+  let pr=0,rj=0;
+  rows.forEach(r=>{const ca=String(r[3]).replace(/^0+/,"");if(ca==="1")pr++;if(ca==="28")rj++});
+  document.getElementById("cPR").textContent=pr;
+  document.getElementById("cRJ").textContent=rj;
+  document.getElementById("cTOT").textContent=rows.length;
+  document.getElementById("cERR").textContent=skipped.length;
+}
+function resetTable(){
+  document.getElementById("tblWrap").style.display="none";
+  document.getElementById("tblScroll").innerHTML="";
+  document.getElementById("tblTip").style.display="none";
+  document.getElementById("errBox").style.display="none";
+  document.getElementById("errList").innerHTML="";
+  document.getElementById("errBadge").textContent="0";
+  updateCards([],[]);
+}
+
+/* ════════════════════════════════════════════════
+   EXPORT — lê ROWS (já atualizado pelas edições)
+════════════════════════════════════════════════ */
+function getCSV(){
+  return"Data;Pedido;UN;CA;Qtd;CodMaterial;Descricao\n"
+    +ROWS.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(";")).join("\n")+"\n";
+}
+function dlBlob(content,filename,mime){
+  const blob=new Blob(["\uFEFF"+content],{type:mime}),url=URL.createObjectURL(blob);
+  const a=document.createElement("a");a.href=url;a.download=filename;
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+}
+document.getElementById("btnDl").addEventListener("click",()=>{if(ROWS.length)dlBlob(getCSV(),"dados.csv","text/csv;charset=utf-8;")});
+document.getElementById("btnDlErr").addEventListener("click",()=>{
+  if(!SKIPPED.length){alert("Sem erros para exportar.");return}
+  dlBlob(SKIPPED.join("\n"),"erros_ocr.txt","text/plain;charset=utf-8;");
+});
 document.getElementById("btnCopy").addEventListener("click",async()=>{
-  if(!_rows.length)return;
+  if(!ROWS.length)return;
   const btn=document.getElementById("btnCopy"),csv=getCSV();
-  try{await navigator.clipboard.writeText(csv)}catch{const ta=document.createElement("textarea");ta.value=csv;ta.style.cssText="position:fixed;opacity:0";document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta)}
+  try{await navigator.clipboard.writeText(csv)}catch{
+    const ta=document.createElement("textarea");ta.value=csv;ta.style.cssText="position:fixed;opacity:0";
+    document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);
+  }
   btn.textContent="✔ Copiado!";setTimeout(()=>{btn.textContent="⧉ Copiar CSV"},2200);
 });
 
-/* ── CONVERTER ── */
+/* ════════════════════════════════════════════════
+   CONVERTER
+════════════════════════════════════════════════ */
 btnConvert.addEventListener("click",async()=>{
   if(!FILES.length){alert("Carregue pelo menos uma imagem.");return}
-  btnConvert.disabled=true;btnConvert.textContent="⏳ Processando...";progArea.style.display="block";
-  ROWS=[];SKIPPED=[];
-  const lang=document.getElementById("selLang").value,psm=+document.getElementById("selPsm").value,
-        contrast=+document.getElementById("selContrast").value,
-        doPre=document.getElementById("chkPre").checked,doInv=document.getElementById("chkInv").checked;
+  btnConvert.disabled=true;btnConvert.textContent="⏳ Processando...";
+  progArea.style.display="block";ROWS=[];SKIPPED=[];
+
+  const lang=document.getElementById("selLang").value;
+  const psm=+document.getElementById("selPsm").value;
+  const scale=+document.getElementById("selScale").value;
+  const doInv=document.getElementById("chkInv").checked;
+
   for(let i=0;i<FILES.length;i++){
     const f=FILES[i];
     _showPreview(i,FILES);
     setP(Math.round(i/FILES.length*80),`Imagem ${i+1}/${FILES.length}: ${f.name}`);
     try{
-      let src=f;
-      if(doPre){setP(Math.round((i+.2)/FILES.length*80),`Pré-processando: ${f.name}`);src=await preprocessImage(f,contrast,doInv)}
+      setP(Math.round((i+.2)/FILES.length*80),`Pré-processando: ${f.name}`);
+      const src=await preprocessImage(f,scale,doInv);
       setP(Math.round((i+.5)/FILES.length*80),`OCR: ${f.name}`);
       const result=await Tesseract.recognize(src,lang,getTesseractConfig(psm));
       setP(Math.round((i+.85)/FILES.length*80),`Parseando: ${f.name}`);
@@ -480,21 +632,25 @@ btnConvert.addEventListener("click",async()=>{
       ROWS.push(...rows);SKIPPED.push(...skipped);
     }catch(err){console.error(err);SKIPPED.push(`[ERRO: ${f.name}] ${err.message}`)}
   }
-  _rows=ROWS;_skipped=SKIPPED;
-  setP(100,`✔ ${ROWS.length} linha(s) — ${SKIPPED.length} não reconhecida(s)`);
+
+  setP(100,`✔ ${ROWS.length} linha(s) extraída(s) — ${SKIPPED.length} não reconhecida(s)`);
   renderTable(ROWS);renderErrors(SKIPPED);updateCards(ROWS,SKIPPED);
   if(ROWS.length||SKIPPED.length)actBar.style.display="flex";
   btnConvert.disabled=false;btnConvert.textContent="🔍 Converter imagens";
 });
 function setP(p,m){progFill.style.width=p+"%";progMsg.textContent=m}
 
-/* ── LIMPAR ── */
+/* ════════════════════════════════════════════════
+   LIMPAR
+════════════════════════════════════════════════ */
 btnClear.addEventListener("click",()=>{
-  FILES=[];ROWS=[];SKIPPED=[];_rows=[];_skipped=[];_pFiles=[];_pIdx=0;
+  FILES=[];ROWS=[];SKIPPED=[];_pFiles=[];_pIdx=0;
   const old=prevWrap.querySelector("img");if(old)old.remove();
-  prevEmpty.style.display="block";prevLabel.style.display="none";prevNav.style.display="none";zoomHint.style.display="none";
+  prevEmpty.style.display="block";prevLabel.style.display="none";
+  prevNav.style.display="none";zoomHint.style.display="none";
   resetTable();actBar.style.display="none";
-  progArea.style.display="none";progFill.style.width="0%";progMsg.textContent="Aguardando...";fInput.value="";
+  progArea.style.display="none";progFill.style.width="0%";
+  progMsg.textContent="Aguardando...";fInput.value="";
 });
 </script>
 </body>
