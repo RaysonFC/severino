@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Severino OCR → CSV</title>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon">⬡</div>
+      <div class="logo-text">
+        <h1>SEVERINO <em>OCR</em></h1>
+        <p class="tagline">Extração inteligente de dados → CSV</p>
+      </div>
+    </div>
+    <div class="header-badge">Tesseract.js <span>v4</span> · OCR Engine</div>
+  </header>
+
+  <!-- CARDS -->
+  <div class="cards">
+    <div class="card c-pr">
+      <div class="card-lbl">Paraná <span class="chip">CA 1</span></div>
+      <div class="card-val" id="cPR">0</div>
+    </div>
+    <div class="card c-rj">
+      <div class="card-lbl">Rio de Janeiro <span class="chip">CA 28</span></div>
+      <div class="card-val" id="cRJ">0</div>
+    </div>
+    <div class="card c-tot">
+      <div class="card-lbl">Total Linhas</div>
+      <div class="card-val" id="cTOT">0</div>
+    </div>
+    <div class="card c-err">
+      <div class="card-lbl">Não Reconhecidos</div>
+      <div class="card-val" id="cERR">0</div>
+    </div>
+  </div>
+
+  <!-- CONFIG -->
+  <p class="section-label">Configurações OCR</p>
+  <div class="cfg">
+    <div class="cfg-g">
+      <label>Idioma OCR</label>
+      <select id="selLang">
+        <option value="por+eng">Português + Inglês</option>
+        <option value="por">Somente Português</option>
+        <option value="eng">Somente Inglês</option>
+        <option value="por+eng+spa">Port. + Inglês + Espanhol</option>
+      </select>
+    </div>
+    <div class="cfg-g">
+      <label>Modo de Página</label>
+      <select id="selPsm">
+        <option value="6">Bloco uniforme (padrão)</option>
+        <option value="3">Automático</option>
+        <option value="4">Coluna única</option>
+        <option value="11">Texto esparso</option>
+      </select>
+    </div>
+    <div class="cfg-g">
+      <label>Contraste</label>
+      <select id="selContrast">
+        <option value="1.4">Suave  (1.4×)</option>
+        <option value="1.7" selected>Normal (1.7×)</option>
+        <option value="2.2">Forte  (2.2×)</option>
+        <option value="3.0">Máximo (3.0×)</option>
+      </select>
+    </div>
+    <div class="cfg-g tog">
+      <input type="checkbox" id="chkPre" checked>
+      <label for="chkPre">Pré-processar imagem</label>
+      <small>cinza · contraste · sharpen</small>
+    </div>
+    <div class="cfg-g tog">
+      <input type="checkbox" id="chkInv" checked>
+      <label for="chkInv">Inverter cores</label>
+      <small>screenshots fundo escuro</small>
+    </div>
+  </div>
+
+  <!-- UPLOAD -->
+  <p class="section-label">Imagens</p>
+  <input type="file" id="fInput" multiple accept="image/*" style="display:none">
+  <div id="dropZone">
+    <span class="dz-icon">📂</span>
+    <div class="dz-title">Carregar imagens</div>
+    <div class="dz-methods">
+      <div class="dz-method">🖱️ Clique para selecionar</div>
+      <div class="dz-method">📤 Arraste e solte aqui</div>
+      <div class="dz-method">⌨️ <kbd>Ctrl+V</kbd> para colar</div>
+      <div class="dz-method">📸 PrintScreen → <kbd>Ctrl+V</kbd></div>
+    </div>
+    <div id="pasteMsg">✔ Imagem colada com sucesso!</div>
+  </div>
+
+  <!-- PREVIEW -->
+  <div id="prevWrap">
+    <div id="prevEmpty">Nenhuma imagem carregada</div>
+    <div id="prevLabel"></div>
+    <div id="prevNav">
+      <button id="btnPrev" disabled>‹</button>
+      <span id="navLbl">1 / 1</span>
+      <button id="btnNext" disabled>›</button>
+    </div>
+    <div id="zoomHint">scroll = zoom · duplo clique = reset</div>
+  </div>
+
+  <!-- PROGRESSO -->
+  <div id="progArea">
+    <div id="progBar"><div id="progFill"></div></div>
+    <div id="progMsg">Aguardando...</div>
+  </div>
+
+  <!-- BOTÕES PRINCIPAIS -->
+  <div class="btn-row">
+    <button class="btn btn-primary" id="btnConvert">🔍 Converter imagens</button>
+    <button class="btn btn-ghost"   id="btnClear">✕ Limpar tudo</button>
+  </div>
+
+  <!-- ERROS -->
+  <div id="errBox">
+    <div class="err-head">
+      <h3>Linhas não reconhecidas <span class="badge-r" id="errBadge">0</span></h3>
+      <button class="btn btn-ghost btn-sm" id="btnTogErr">▼ Ver</button>
+    </div>
+    <div id="errList"></div>
+  </div>
+
+  <!-- TABELA -->
+  <div id="tblWrap">
+    <div class="tbl-scroll" id="tblScroll"></div>
+  </div>
+
+  <!-- AÇÕES -->
+  <div class="actions" id="actBar" style="display:none">
+    <button class="btn btn-dark" id="btnDl">↓ Baixar CSV</button>
+    <button class="btn btn-dark" id="btnCopy">⧉ Copiar CSV</button>
+    <button class="btn btn-dark btn-muted" id="btnDlErr">↓ Baixar Erros TXT</button>
+  </div>
+
+</div>
+
+<!-- Módulos em ordem de dependência -->
+<script src="js/corrections.js"></script>
+<script src="js/preprocess.js"></script>
+<script src="js/parser.js"></script>
+<script src="js/preview.js"></script>
+<script src="js/table.js"></script>
+<script src="js/export.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
